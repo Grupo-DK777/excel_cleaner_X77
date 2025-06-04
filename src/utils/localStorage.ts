@@ -5,7 +5,8 @@ const KEYS = {
   AUTH_USER: 'excelcleaner_auth_user',
   AUTH_TOKEN: 'excelcleaner_auth_token',
   USER_PREFERENCES: 'excelcleaner_user_preferences',
-  RECENT_FILES: 'excelcleaner_recent_files'
+  RECENT_FILES: 'excelcleaner_recent_files',
+  PROCESSING_RESULTS: 'excelcleaner_processing_results'
 };
 
 // Valores por defecto
@@ -67,4 +68,16 @@ export const addRecentFile = (fileName: string): void => {
 
 export const getRecentFiles = (): string[] => {
   return getPreferences().recentFiles;
+};
+
+// Funciones para manejar resultados
+export const saveResult = (result: ProcessingResult): void => {
+  const currentResults = getResults();
+  const updatedResults = [result, ...currentResults].slice(0, 10); // Mantener solo los últimos 10 resultados
+  localStorage.setItem(KEYS.PROCESSING_RESULTS, JSON.stringify(updatedResults));
+};
+
+export const getResults = (): ProcessingResult[] => {
+  const resultsStr = localStorage.getItem(KEYS.PROCESSING_RESULTS);
+  return resultsStr ? JSON.parse(resultsStr) : [];
 };

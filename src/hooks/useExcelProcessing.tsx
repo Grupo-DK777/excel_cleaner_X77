@@ -12,6 +12,7 @@ import {
 } from '../utils/excelUtils';
 import { addRecentFile } from '../utils/localStorage';
 import { mockExcelData } from '../utils/mockData';
+import { saveResult, getResults } from '../utils/localStorage';
 
 interface ExcelProcessingContextType {
   file: ExcelFile | null;
@@ -50,7 +51,7 @@ export const ExcelProcessingProvider = ({ children }: { children: ReactNode }) =
   const [processedData, setProcessedData] = useState<ExcelData | null>(null);
   const [options, setOptionsState] = useState<ProcessingOptions>(DEFAULT_OPTIONS);
   const [selectedColumns, setSelectedColumnsState] = useState<string[]>([]);
-  const [results, setResults] = useState<ProcessingResult[]>([]);
+  const [results, setResults] = useState<ProcessingResult[]>(getResults());
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -141,12 +142,13 @@ export const ExcelProcessingProvider = ({ children }: { children: ReactNode }) =
         const result: ProcessingResult = {
           id: Math.random().toString(36).substring(2, 11),
           fileName: file.name,
-          timestamp: new Date().toISOString(),
+          timestamp: Date.now(), // Cambiar a timestamp numérico
           originalRows: data.totalRows,
           processedRows: processed.cleanData.rows.length,
           duplicateCount: processed.duplicateData.rows.length
         };
-        setResults(prev => [result, ...prev]);
+        saveResult(result); // Guardar en localStorage
+        setResults(getResults()); // Actualizar el estado con los datos de localStorage
       }
     } catch (error) {
       setError('Error al procesar los datos');

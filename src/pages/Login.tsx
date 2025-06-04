@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate, Navigate } from 'react-router-dom';
 import { FileSpreadsheet, Lock, Mail, AlertCircle } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
+import logoX77 from '../assets/LogoX77.png';
 
 const Login: React.FC = () => {
   const { isAuthenticated, login, loading, error } = useAuth();
@@ -84,8 +85,12 @@ const Login: React.FC = () => {
       <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-md">
         <div className="text-center">
           <div className="flex justify-center">
-            <div className="bg-blue-600 text-white p-3 rounded-full">
-              <FileSpreadsheet className="h-8 w-8" />
+            <div className="bg-white rounded-full p-2 shadow-sm">
+              <img
+                src="/images/LogoX77.png"
+                alt="Logo X77"
+                className="h-24 w-auto mb-4 object-contain" // Aumentado de h-16 a h-24
+              />
             </div>
           </div>
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">

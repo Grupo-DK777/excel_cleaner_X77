@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FileSpreadsheet, User, Menu, X, LogOut } from 'lucide-react';
 import { useAuth } from '../hooks/useAuth';
+import logoX77 from '../assets/LogoX77.png';
 
 const Navbar: React.FC = () => {
   const { isAuthenticated, user, logout } = useAuth();
@@ -28,8 +29,12 @@ const Navbar: React.FC = () => {
           {/* Logo y nombre */}
           <div className="flex items-center">
             <Link to="/" className="flex items-center">
-              <FileSpreadsheet className="h-8 w-8 mr-2" />
-              <span className="font-bold text-xl">ExcelCleaner</span>
+              <img
+                src="/images/LogoX77.png"
+                alt="Logo X77"
+                className="h-10 w-auto mr-2 object-contain brightness-0 invert"
+              />
+              <span className="font-bold text-xl ml-2">ExcelCleaner</span>
             </Link>
           </div>
 
