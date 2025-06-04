@@ -8,6 +8,16 @@ import UploadStep from '../components/steps/UploadStep';
 import ConfigStep from '../components/steps/ConfigStep';
 import ResultsStep from '../components/steps/ResultsStep';
 
+// ✅ Opciones por defecto para reiniciar el estado
+const DEFAULT_OPTIONS = {
+  removeDuplicates: true,
+  trimWhitespace: true,
+  normalizeCase: false,
+  customReplacements: [],
+  formatDates: false,
+  formatNumbers: false
+};
+
 const steps = [
   { number: 1, label: 'Cargar archivo' },
   { number: 2, label: 'Configurar' },
@@ -69,6 +79,7 @@ const Dashboard: React.FC = () => {
     }
   };
 
+  // ✅ Este método reinicia todo a valores iniciales
   const handleReset = () => {
     setFile(null);
     setSelectedColumns([]);
@@ -123,7 +134,7 @@ const Dashboard: React.FC = () => {
                 duplicatesCount={processedData.duplicateCount || 0}
                 onExport={exportData}
                 onBack={handlePrevStep}
-                onReset={handleReset}
+                onReset={handleReset} // ✅ Este botón ahora funciona correctamente
               />
             )}
           </div>

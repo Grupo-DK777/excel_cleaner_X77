@@ -81,22 +81,20 @@ const Login: React.FC = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-8 bg-white p-8 rounded-lg shadow-md">
+    <div className="min-h-screen flex items-center justify-center bg-gray-100 py-6 px-6 sm:px-8 lg:px-10">
+      <div className="w-full max-w-md space-y-4 bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-xl">
         <div className="text-center">
-          <div className="flex justify-center">
-            <div className="bg-white rounded-full p-2 shadow-sm">
-              <img
-                src="/images/LogoX77.png"
-                alt="Logo X77"
-                className="h-24 w-auto mb-4 object-contain" // Aumentado de h-16 a h-24
-              />
-            </div>
+          <div className="flex justify-center items-center mt-2 mb-6">
+            <img
+              src="/images/LogoX77.png"
+              alt="Logo X77"
+              className="h-52 w-auto drop-shadow-xl hover:scale-110 transform transition-all duration-500 ease-in-out hover:rotate-2 hover:brightness-110 cursor-pointer"
+            />
           </div>
           <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
             ExcelCleaner
           </h2>
-          <p className="mt-2 text-sm text-gray-600">
+          <p className="mt-3 text-base text-gray-600">
             Inicia sesión para limpiar y procesar tus archivos Excel
           </p>
         </div>
